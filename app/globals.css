@@ -16,12 +16,29 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+@layer base {
+  @font-face {
+      font-family: 'ban';
+      src: url('/fonts/bangla_normal.woff2') format(woff2);
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'ban-bold';
+      src: url('/fonts/bangla_bold.woff2') format(woff2);
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
+  }
+}
+
+
+.ban{
+  font-family: ban ;
+}
+
+.ban-bold{
+  font-family: ban-bold ;
 }
