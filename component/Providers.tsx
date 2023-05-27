@@ -7,10 +7,10 @@ interface Props{
     children: ReactNode
 }
 
-const Providers = ({children}:Props) => {
+const NextAuthProvider = ({children}:Props) => {
   return (
     <SessionProvider>{children}</SessionProvider>
   )
 }
 
-export default Providers
+export default NextAuthProvider

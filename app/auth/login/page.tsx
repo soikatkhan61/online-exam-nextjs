@@ -1,11 +1,15 @@
 "use client";
 import React from 'react'
 import Image from 'next/image'
-import { signIn,SignInResponse  } from 'next-auth/react'
+import { signIn,SignInResponse,useSession  } from 'next-auth/react'
 import { z, ZodType } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { updateUser,setName } from '../../../redux/features/user/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type FormData = {
   phone: string;
@@ -22,29 +26,51 @@ interface IProps {
 }
 
 const Login = ({ searchParams }: IProps) => {
+  const router = useRouter()
   const schema: ZodType<FormData> = z.object({
     phone: z.string().min(5).max(15),
     password: z.string().min(6).max(20),
   })
-
+  const { data: session } = useSession();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) })
+  const dispatch = useDispatch();
+
 
   const submitData = async (data: FormData) => {
     console.log("data initable");
-    
     const result = await signIn("credentials",{
       phone: data.phone,
       password: data.password,
       redirect:false,
       callbackUrl:"/"
     })
-
-    console.log(result);
     
+    console.log(session);
 
+    if(result?.ok  && result?.error == null ){
+      toast.success("Authorized",{
+        autoClose: 1000,
+      })
+      if(session?.user){
+        const payload = {
+          name: session.user.name,
+          phone: session.user.phone,
+          role:session.user.role,
+        };
+        dispatch(updateUser(payload));
+      }
+      setTimeout(() =>{
+        router.push(`/`)
+      },1500)
+      
+    }else{
+      toast.error("Invalid Credentials")
+    }
   }
+
 return (
   <div className="flex flex-col  min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
+    <button className='btn ' onClick={()=>dispatch(setName("soikat"))}>set</button>
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
       <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
         Sign in to your account
@@ -61,7 +87,6 @@ return (
         {searchParams?.message && <p className='rounded bg-red-500 text-white text-center py-2'>
           {searchParams?.message}
         </p>}
-
         <div className='flex justify-center mb-4'>
           <Image src='/logo.svg' alt='logo' width='150' height='80' />
         </div>
@@ -100,6 +125,7 @@ return (
         </form>
       </div>
     </div>
+    <ToastContainer/>
   </div>
 )
 }

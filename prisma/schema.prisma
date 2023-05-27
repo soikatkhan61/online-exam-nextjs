@@ -20,3 +20,15 @@ model User {
   role  String
 }
 
+model Exam{
+  id Int @id @default(autoincrement())
+  name String
+  topic String
+  duration Int
+  marks Int
+  startTime DateTime
+  endTime DateTime
+  ans_published Boolean
+  questions String
+}
+

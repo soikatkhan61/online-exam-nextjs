@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import {useState,useEffect} from 'react'
 import RegistrationState from '@/component/auth/RegistrationState';
 import { useRouter } from 'next/navigation';
-import prisma from '@/lib/prisma';
+
 type FormData = {
   fullName: string;
   zilla: string;
@@ -18,11 +18,10 @@ type FormData = {
 }
 
 const Register = () => {
-
   const [stateOfRegistration,setStateOfRegistration] = useState<Number | null>(null);
   const [statusText,setStatusText] = useState<String | null | undefined>(null);
   const router = useRouter()
-
+  
   useEffect(() => {
     const tst = ()=>{
       fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -32,7 +31,6 @@ const Register = () => {
 
     tst()
   },[])
-
 
 
   const schema: ZodType<FormData> = z.object({
