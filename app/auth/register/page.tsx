@@ -64,7 +64,7 @@ const Register = () => {
       }),
     });
     
-    if(res.status == 200){
+    if(res.status == 200) {
       let userObj = await res.json()
       setStateOfRegistration(200)
       setStatusText("Registration successful")
