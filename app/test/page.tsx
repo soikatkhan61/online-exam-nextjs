@@ -5,7 +5,7 @@ import React, { useState,useEffect,Suspense  } from 'react'
 
 
 
-const page = () => {
+const Page = () => {
   const [progress, setProgress] = useState(false)
   TopBarProgress.config({
     barColors:{
@@ -28,4 +28,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
