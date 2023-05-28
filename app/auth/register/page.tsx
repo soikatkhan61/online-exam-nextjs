@@ -88,7 +88,7 @@ const Register = () => {
         <p className="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
           Or
           <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-            create a new account
+            Login
           </a>
         </p>
       </div>
@@ -120,7 +120,7 @@ const Register = () => {
 
             <div className="mt-6">
               <label htmlFor="College" className="block text-sm font-medium text-gray-700 leading-5">
-                College
+                Department
               </label>
               <div className="mt-1 rounded-md shadow-sm">
                 <input {...register('college')} id="College" type="text" className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 " />
@@ -130,7 +130,7 @@ const Register = () => {
 
             <div className="mt-6">
               <label htmlFor="Phone" className="block text-sm font-medium text-gray-700 leading-5">
-                Phone
+                Student ID
               </label>
               <div className="mt-1 rounded-md shadow-sm">
                 <input {...register('phone')} id="Phone" type="text" className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 " />

@@ -13,7 +13,7 @@ export default function Home() {
               New
             </span>{" "}
             <span className="text-sm font-medium ban">
-              আমাদের এডভান্সড কোর্স গুলো দেখুন
+              Notice ! Dont miss it !
             </span>
             <svg
               aria-hidden="true"
@@ -30,11 +30,10 @@ export default function Home() {
             </svg>
           </a>
           <h1 className="ban mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">
-            বাছাইকৃত প্রশ্নে এক্সাম দিয়ে যাচাই করো তোমাকে
+           Green University Student Forum
           </h1>
-          <p className="ban mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
-            আমরা নিয়ে এসেছি টপ ক্লাস প্রশ্ন পত্র! যেখানে তুমি পরীক্ষা দিয়ে যাচাই করতে পারবে নিজের পজিশনকে,
-            এবং আমাদের কোর্স গুলোতে এনরোল করে নিজের এডমিশন যাত্রাকে সহজ করে নাও
+          <p className="ban mb-8 text-xl font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
+          Create your profetional development
           </p>
         </div>
 

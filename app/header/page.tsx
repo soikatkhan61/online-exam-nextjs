@@ -17,7 +17,7 @@ const page: React.FC = () => {
                             alt="Flowbite Logo"
                         />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                            Flowbite
+                            GreenForum
                         </span>
                     </Link>
 
@@ -39,10 +39,10 @@ const page: React.FC = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/admin"
+                                    href="/auth/register"
                                     className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                                 >
-                                    Admin
+                                    Register
                                 </Link>
                             </li>
                             <li>
@@ -50,7 +50,7 @@ const page: React.FC = () => {
                                     href="#"
                                     className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                                 >
-                                    Services
+                                    Upcoming Events
                                 </a>
                             </li>
                             <li>
@@ -58,7 +58,7 @@ const page: React.FC = () => {
                                     href="#"
                                     className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                                 >
-                                    Pricing
+                                    Issues
                                 </a>
                             </li>
                             <li>
