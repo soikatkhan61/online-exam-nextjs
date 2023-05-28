@@ -6,7 +6,6 @@ import Link from 'next/link'
 import TopLoading from "@/component/TopLoading";
 
 const page: React.FC = () => {
-    const { data: session } = useSession();
     return (
         <>
         <TopLoading/>
