@@ -50,7 +50,7 @@ const Register = () => {
   const submitData = async (data: FormData) => {
     setStateOfRegistration(1)
     setStatusText("Proccessing...")
-    const res = await fetch("http://localhost:3000/api/register", {
+    const res = await fetch("https://online-exam-nextjs.vercel.app/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
