@@ -9,6 +9,7 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 model User {
   id    Int     @id @default(autoincrement())
   name  String
@@ -29,6 +30,14 @@ model Exam{
   startTime DateTime
   endTime DateTime
   ans_published Boolean
-  questions String
+  questions     Question[]
+  createdAt DateTime @default(now())
+}
+
+model Question {
+  id     Int    @id @default(autoincrement())
+  text   String
+  exam   Exam   @relation(fields: [examId], references: [id])
+  examId Int
 }
 

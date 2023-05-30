@@ -16,7 +16,7 @@ const Sidebar:React.FC = () => {
             link: '/admin'
         },
         {
-            item: 'Exam',
+            item: 'Exams',
             link: '/admin/exam'
         },
         {
@@ -32,7 +32,7 @@ const Sidebar:React.FC = () => {
                 <Link
                     href={m.link}
                     key={key}
-                    className={`${pathname === m.link && 'text-white bg-blue-700' } ${key==0 && 'rounded-t-lg'} block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700`}
+                    className={`${pathname === m.link && 'text-white bg-primary-800' } ${key==0 && 'rounded-t-lg'} block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-primary-700`}
                 >
                     {m.item}
                 </Link>

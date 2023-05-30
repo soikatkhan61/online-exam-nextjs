@@ -2,28 +2,14 @@
 import TopBarProgress from "react-topbar-progress-indicator";
 import Router from "next/router"
 import React, { useState,useEffect,Suspense  } from 'react'
-
+import {toast,ToastContainer} from 'react-toastify'
 
 
 const Page = () => {
-  const [progress, setProgress] = useState(false)
-  TopBarProgress.config({
-    barColors:{
-      "0": "#f11946",
-    },
-    shadowBlur: 0,
-  });
-   Router.events.on("routeChangeStart", () => {
-      setProgress(true);
-   })
-
-   Router.events.on("routeChangeComplete", () => {
-      setProgress(false) 
-   })
-
+  toast.success("hii")
   return (
   <div>
-     {<TopBarProgress />}
+    <ToastContainer/>
   </div>
   )
 }

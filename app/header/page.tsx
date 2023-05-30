@@ -4,7 +4,30 @@ import React from 'react'
 import Link from 'next/link'
 import TopLoading from "@/component/TopLoading";
 
+
 const page: React.FC = () => {
+    const navbarItems = [
+        {
+            page:'Home',
+            link:'/',
+        },
+        {
+            page:'Admin',
+            link:'/admin',
+        },
+        {
+            page:'Login',
+            link:'/auth/login',
+        },
+        {
+            page:'Register',
+            link:'/auth/register',
+        },
+        {
+            page:'Dashboard',
+            link:'/dashboard',
+        }
+    ]
     return (
         <>
         <TopLoading/>
@@ -28,47 +51,21 @@ const page: React.FC = () => {
                         id="mobile-menu-2"
                     >
                         <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <Link
-                                    href="/auth/login"
-                                    className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                                    aria-current="page"
-                                >
-                                    Login
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/auth/register"
-                                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                                >
-                                    Register
-                                </Link>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                                >
-                                    Upcoming Events
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                                >
-                                    Issues
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                                >
-                                    Contact
-                                </a>
-                            </li>
+                            {
+                                navbarItems.map((item,index)=>{
+                                    return <li>
+                                    <Link
+                                        key={index}
+                                        href={item.link}
+                                        className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                                        aria-current="page"
+                                    >
+                                        {item.page}
+                                    </Link>
+                                </li>
+                                })
+                            }
+                            
                         </ul>
                     </div>
                 </div>
