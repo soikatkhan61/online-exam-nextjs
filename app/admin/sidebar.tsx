@@ -20,8 +20,16 @@ const Sidebar:React.FC = () => {
             link: '/admin/exam'
         },
         {
+            item: 'Moderator',
+            link: '/admin/moderator'
+        },
+        {
             item: 'Create Exam',
             link: '/admin/exam/create'
+        },
+        {
+            item: 'Add Question',
+            link: '/admin/exam/add-questions'
         }
     ]
 

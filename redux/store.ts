@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  userReducer  from "./features/user/userSlice";
+import addQuestionSlice from "./features/question/addQuestionSlice";
 export const store = configureStore({
   reducer: {
-    user:userReducer
+    user:userReducer,
+    questions:addQuestionSlice
   },
   devTools: process.env.NODE_ENV !== "production",
 });
