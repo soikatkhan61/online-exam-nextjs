@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import createExam from '../examController'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link'
 type FormData = {
     name: string,
     topic: string,
@@ -15,8 +16,9 @@ type FormData = {
     endTime: Date
 }
 const CreateExam: React.FC = () => {
-    const [disableButton,setDisableButton] = useState(false)
-    const [renderAddQusButton,setRenderAddQusButton] = useState(false)
+    const [disableButton, setDisableButton] = useState(false)
+    const [renderAddQusButton, setRenderAddQusButton] = useState(false)
+    const [examId, setExamId] = useState(Number)
     const schema: ZodType<FormData> = z.object({
         name: z.string().min(3).max(100),
         topic: z.string().min(3).max(100),
@@ -31,19 +33,23 @@ const CreateExam: React.FC = () => {
     const submitData = async (data: FormData) => {
         setDisableButton(true)
         let res = await createExam(data)
-        if (res.status == 'error'){
+        if (res.status == 'error') {
             setDisableButton(false)
             return toast.error(res.message)
         }
-        if (res.status == 'success'){
+        console.log(res);
+
+        if (res.status == 'success' && res.exam) {
+            console.log(res.exam.id);
+            setExamId(res.exam.id)
             setRenderAddQusButton(true)
             toast.success(res.message)
-        } 
+        }
     }
 
     return (
         <>
-        <ToastContainer />
+            <ToastContainer />
             <div className='border p-5 rounded mb-4'>
                 <form onSubmit={handleSubmit(submitData)}>
                     <div className="mb-6">
@@ -139,21 +145,20 @@ const CreateExam: React.FC = () => {
                     <button
                         disabled={disableButton}
                         type="submit"
-                        className={`bg-blue-700 hover:bg-blue-800  ${disableButton && 'bg-blue-300 hover:bg-blue-300' } text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}
+                        className={`bg-blue-700 hover:bg-blue-800  ${disableButton && 'bg-blue-100 hover:bg-blue-300'} text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}
                     >
                         Create
                     </button>
+
                     {
-                        renderAddQusButton && 
-                        <button
-                        className={`mx-2 bg-green-700 hover:bg-green-800 text-white  focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}
-                    >
-                        Add Question
-                    </button>
+                        renderAddQusButton &&
+                        <Link href={`/admin/exam/add-questions?exam_id=${examId}`} className={`mx-2 bg-green-700 hover:bg-green-800 text-white  focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}>
+                            Add Question
+                        </Link>
                     }
                 </form>
             </div>
-            
+
         </>
 
     )

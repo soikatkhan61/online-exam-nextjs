@@ -1,25 +1,14 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { getAllExams } from './examController';
-interface ExamData {
-  id: number;
-  name: string;
-  topic: string;
-  marks: number;
-  duration: number;
-  startTime: Date;
-  endTime: Date;
-  ans_published: boolean;
-  questions?: number[]; // Add questions property here
-  createdAt: Date;
-}
-const page: React.FC = () => {
+import Link from 'next/link';
+import { ExamData } from '@/lib/types/exam';
+
+const Exam: React.FC = () => {
   const [exams, setExams] = useState<ExamData[] | null>([])
   useEffect(() => {
     const fetchExamsData = async () => {
       let res = await getAllExams()
-      console.log(res[0]);
-
       setExams(res)
     }
     fetchExamsData()
@@ -33,6 +22,9 @@ const page: React.FC = () => {
             <table className="w-full text-sm text-left text-primary-100">
               <thead className="text-xs text-white uppercase bg-primary-600 border-b border-primary-400 dark:text-white">
                 <tr>
+                  <th scope="col" className="px-6 py-3 bg-primary-900">
+                    ID
+                  </th>
                   <th scope="col" className="px-6 py-3 bg-primary-800">
                     Exam Name
                   </th>
@@ -52,13 +44,14 @@ const page: React.FC = () => {
               </thead>
               <tbody>
                 {exams?.map((e, i) => {
-                  return <tr className="bg-primary-500 border-b border-primary-400 text-black">
-                    <th
+                  return <tr key={i} className="bg-primary-500 border-b border-primary-400 text-black">
+                    <td className="px-6 py-4 bg-slate-100">{e.id}</td>
+                    <td
                       scope="row"
                       className="px-6 py-4 font-medium bg-slate-50 whitespace-nowrap"
                     >
                       {e.name}
-                    </th>
+                    </td>
                     <td className="px-6 py-4 bg-slate-100">{e.topic}</td>
                     <td className="px-6 py-4 bg-slate-50">{e.marks}</td>
                     <td className="px-6 py-4 bg-slate-100" >{e.duration}</td>
@@ -67,9 +60,9 @@ const page: React.FC = () => {
                         Edit
                       </a>
                       |
-                      <a href="#" className="font-medium  mx-2  hover:underline">
+                      <Link href={`/admin/exam/add-questions?exam_id=${e.id}`} className="font-medium  mx-2  hover:underline">
                         Add Qus
-                      </a>
+                      </Link>
                       |
                       <a href="#" className="font-medium text-red-500 mx-2  hover:underline">
                         Delete
@@ -85,4 +78,4 @@ const page: React.FC = () => {
   )
 }
 
-export default page
+export default Exam

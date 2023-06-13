@@ -8,6 +8,7 @@ interface QusData {
   opt2: string;
   opt3: string;
   opt4: string;
+  examId:number;
 }
 
 export default async function createQus(data: QusData) {
@@ -21,7 +22,7 @@ export default async function createQus(data: QusData) {
         opt4: data.opt4,
         ans: '1',
         exam:{
-          connect:{id:1}
+          connect:{id:data.examId}
         }
       },
     });
@@ -43,13 +44,16 @@ export default async function createQus(data: QusData) {
   }
 }
 
-export async function getQuestionByExamId(examId: string){
+export async function getQuestionByExamId(examId: number) {
   try {
-    const res = await prisma.question.findMany()
-    console.log(typeof res);
-    
-    return res
+    const res = await prisma.question.findMany({
+      where:{
+        examId:examId
+      }
+    });
+    return {status: 'error',  res: res};
   } catch (error) {
-    
+    return {status: 'error',  res: null};
   }
 }
+

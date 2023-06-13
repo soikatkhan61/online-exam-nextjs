@@ -13,12 +13,15 @@ const addQuestionSlice = createSlice({
         state.questions.push(...payload);
 
     },
+    clearQuestion:(state)=>{
+      state.questions = []
+    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
   },
 });
 
-export const { addQuestion, setLoading } = addQuestionSlice.actions;
+export const { addQuestion,clearQuestion ,setLoading } = addQuestionSlice.actions;
 
 export default addQuestionSlice.reducer;

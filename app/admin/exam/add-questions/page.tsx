@@ -2,17 +2,19 @@ import QuestionList from "../QuestionList";
 import Question_Form from "../QuestionForm";
 import {Providers} from '../../../../redux/provider'
 
-interface Question {
-  id: number;
-  question_text: string;
-  opt1: string;
-  opt2: string;
-  opt3: string;
-  opt4: string;
-  ans: string;
-  examId: number;
-}
-const Add_Qus: React.FC = () => {
+type Props = {
+  params?: {
+    num?: string;
+  };
+  searchParams?: {
+    exam_id?: string;
+  };
+};
+const Add_Qus: React.FC = (props: Props) => {
+  let exam_id = props.searchParams?.exam_id;
+  if(!exam_id){
+    return <p>Please select exam first</p>
+  }
   return (
    <Providers>
       <Question_Form/>

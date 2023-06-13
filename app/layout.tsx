@@ -34,7 +34,6 @@ export default function RootLayout({
             <ReactToast/>
             <Footer />
           </NextAuthProvider>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js" async />
         </body>
       </Providers>
     </html>
